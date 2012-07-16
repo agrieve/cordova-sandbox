@@ -24,8 +24,8 @@
 	<true/>
 	<key>ExternalHosts</key>
 	<array>
-		<string>foobar.apache.org/robots.txt</string>
 		<string>cordova-filetransfer.jitsu.com*</string>
+		<string>whatheaders.com</string>
 	</array>
 	<key>Plugins</key>
 	<dict>

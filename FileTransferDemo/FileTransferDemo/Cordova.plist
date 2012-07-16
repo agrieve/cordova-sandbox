@@ -24,6 +24,8 @@
 	<true/>
 	<key>ExternalHosts</key>
 	<array>
+		<string>code.jquery.com/*</string>
+		<string>*</string>
 		<string>*pastebin.com*</string>
 	</array>
 	<key>Plugins</key>
