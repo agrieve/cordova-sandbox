@@ -3,6 +3,7 @@
 	<name>com.google.MobileSpec.MobileSpec</name>
 	<comment></comment>
 	<projects>
+		<project>Cordova</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
