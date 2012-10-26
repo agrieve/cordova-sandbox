@@ -24,9 +24,9 @@
 	<true/>
 	<key>ExternalHosts</key>
 	<array>
+		<string>apache.org*</string>
 		<string>whatheaders.com*</string>
 		<string>audio.ibeat.org*</string>
-		<string>*apache.org*</string>
 		<string>cordova-filetransfer.jitsu.com*</string>
 	</array>
 	<key>Plugins</key>
