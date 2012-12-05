@@ -68,7 +68,7 @@
     
     self.viewController = [[MainViewController alloc] init];
     self.viewController.useSplashScreen = YES;
-    self.viewController.wwwFolderName = @"incubator-cordova-mobile-spec";
+    self.viewController.wwwFolderName = @"cordova-mobile-spec";
     self.viewController.startPage = @"index.html";
     self.viewController.invokeString = invokeString;
 

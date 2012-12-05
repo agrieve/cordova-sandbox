@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta charset="utf-8">
+    <script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+  </head>
+  <body onload="go()">
+    <button id="click">Click this button</button>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+      function go() {
+      $(function() {
+        var button = $('#click');
+        button.on('click', function() {
+          if (!navigator.camera) {
+            alert("Photos are not supported on this device");
+            return;
+          }
+
+          navigator.camera.getPicture(
+            function( data ) {
+              alert("Photo taken: " + data.length);
+            },
+            function (sMessage) {
+              alert("Photo error: " + sMessage);
+            },
+            {
+              quality: 99,
+              destinationType: Camera.DestinationType.FILE_URI,
+              sourceType:0
+              //destinationType: Camera.DestinationType.DATA_URL
+            });
+        });
+      });
+      }
+    </script>
+  </body>
+</html>

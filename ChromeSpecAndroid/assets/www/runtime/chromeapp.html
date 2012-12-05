@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <script src="chromeapi.js"></script>
+        <script src="cordova.js"></script>
+    </head>
+    <body>
+    </body>
+<script>
+(function() {
+  var eventIframe = null;
+  var manifestJson = null;
+
+  function loadIframe(callback) {
+    var iframe = document.createElement('iframe');
+    iframe.src = 'chromebgpage.html';
+    iframe.style.display = 'none';
+    iframe.onload = function() {
+      iframe.onload = null;
+      eventIframe = iframe;
+      callback();
+    };
+    document.body.appendChild(iframe);
+  }
+
+  function fetchManifestJson(callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'manifest.json', true);
+    xhr.onload = function() {
+      manifestJson = JSON.parse(xhr.responseText);
+      callback();
+    };
+    xhr.send(null);
+  }
+  function loadBgPage() {
+    var scripts = manifestJson.app.background.scripts;
+    var iframeWin = eventIframe.contentWindow;
+    var iframeDoc = eventIframe.contentDocument;
+    var numScriptsLoaded = 0;
+    function injectScript(path) {
+      var scriptNode = iframeDoc.createElement('script');
+      scriptNode.onload = afterScriptsLoaded;
+      scriptNode.src = path;
+      iframeDoc.body.appendChild(scriptNode);
+    }
+    function afterScriptsLoaded() {
+      this.onload = null;
+      if (++numScriptsLoaded == scripts.length) {
+        chrome.app.runtime.onLaunched.fire();
+      }
+    };
+    chrome.mobile.impl.init(window, eventIframe);
+
+    for (var i = 0, scriptPath; scriptPath = scripts[i]; ++i) {
+      injectScript(scriptPath);
+    }
+  }
+
+  function pageReady() {
+    if (eventIframe && manifestJson) {
+      loadBgPage();
+    }
+  }
+  // Remove this script node from the DOM so it doens't cause trouble later.
+  document.body.innerHTML = '';
+  loadIframe(pageReady);
+  fetchManifestJson(pageReady);
+})();
+</script>
+</html>

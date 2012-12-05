@@ -31,6 +31,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>InAppBrowser</key>
+		<string>CDVInAppBrowser</string>
 		<key>Device</key>
 		<string>CDVDevice</string>
 		<key>Logger</key>
