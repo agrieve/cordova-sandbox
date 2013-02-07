@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="abs_stretch vbox">
+  <div class="title">Text Vault</div>
+  <img src="third_party/lock.svg" class="lock-img" style="display:none">
+  <div id="new-user" class="flex1 relative" style="display:none">
+    <div>No data present.</div>
+    <form>
+      <div>Enter a password: <input id="new-password" class="password-input" autocorrect=off autocapitalize=off></div>
+      <div><input type="submit" value="Done"></div>
+    </form>
+  </div>
+  <div id="existing-user" class="flex1 relative" style="display:none">
+    <div class="lock-msg">Enter password to unlock.</div>
+    <form class="bottom-align">
+      <input id="existing-password" class="password-input" autocorrect=off autocapitalize=off>
+      <div><input type="submit" value="Unlock"></div>
+    </form>
+  </div>
+  <div id="edit-view" class="flex1 relative" style="display:none">
+    <div class="gear-container" tabindex="3">
+      <img src="third_party/gear.svg" class="gear-img">
+    </div>
+    <div id="flip-container" class="abs_stretch">
+      <div id="edit-main" class="flip-face abs_stretch vbox">
+        <textarea id="editor-textbox" class="flex1"></textarea>
+        <div style="font-size:10pt">
+          <div>Last saved: <span id="last-saved"></span></div>
+          <div>Character Count: <span id="char-count"></span></div>
+          <div style="text-align:center"><button id="btn-lock">Lock</button></div>
+        </div>
+      </div>
+      <div id="settings-view" class="flip-face flip-back">
+        <div style="line-height: 2em">Auto-lock after: <select id="autolock-select">
+          <option value="-1">never</option>
+          <option value="30">30 seconds</option>
+          <option value="60">1 minute</option>
+          <option value="120">2 minutes</option>
+          <option value="300">5 minutes</option>
+        </select></div>
+        <div class="settings-section relative" id="change-password-section">Change Password
+          <div class="password-updated-msg">Password Updated.</div>
+          <div>Old Password: <input class="password-input" autocorrect=off autocapitalize=off></div>
+          <div>New Password: <input class="password-input" autocorrect=off autocapitalize=off></div>
+          <div><button id="change-password-btn" disabled>Change Password</button>
+        </div>
+        <div class="settings-section"><button id="btn-close">Done</button></button></div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- TODO: inject this only for cordova. -->
+<script src="third_party/fastclick.js"></script>
+<script src="main.js"></script>
+</html>

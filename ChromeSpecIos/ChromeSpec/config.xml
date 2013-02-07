@@ -32,4 +32,5 @@
 		<plugin name="Notification" value="CDVNotification"/>
 		<plugin name="SplashScreen" value="CDVSplashScreen"/>
 	</plugins>
+    <access origin="*" />
 </cordova>

@@ -396,7 +396,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "exec ${PROJECT_DIR}/../../chrome-cordova/integration/iosbuildstep.sh \"../../chrome-cordova/grunt_output/cordova_spec\" \"../../cordova-js/pkg\"";
+			shellScript = "exec ../../chrome-cordova/integration/iosbuildstep.sh \"../../chrome-cordova/grunt_output/cordova_spec\" \"../../cordova-js/pkg\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

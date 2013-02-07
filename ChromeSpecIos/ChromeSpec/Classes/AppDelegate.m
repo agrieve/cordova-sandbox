@@ -70,7 +70,6 @@
     self.viewController.useSplashScreen = NO;
     self.viewController.wwwFolderName = @"www";
     self.viewController.startPage = @"chromeapp.html";
-    self.viewController.invokeString = invokeString;
 
     // NOTE: To control the view's frame size, override [self.viewController viewWillAppear:] in your view controller.
 
